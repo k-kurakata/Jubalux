@@ -4,7 +4,7 @@
 from pymongo import MongoClient
 import json
 
-class getmongo:
+class convertMongo:
     con = MongoClient('172.16.4.84', 27017)
     db = con['sensordb']
     col = db.sensors

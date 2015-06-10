@@ -4,7 +4,7 @@ import sys, json
 from jubatus.anomaly import client
 from jubatus.common import Datum
 from pymongo import MongoClient
-from client import getmongo
+from getmongo import convertMongo 
 
 NAME = "lux";
 
@@ -14,8 +14,8 @@ if __name__ == '__main__':
     anom = client.Anomaly("127.0.0.1",9199,NAME)
 
     # 2.学習用データの準備
-    getmongo =  getmongo()
-    dic = getmongo.getDic()
+    mongo_dic =  convertMongo()
+    dic = mongo_dic.getDic()
     name = '' 
     value = 0
     for line in dic:

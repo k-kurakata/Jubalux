@@ -1,8 +1,10 @@
 {
   "method": "AROW",
   "converter" : {
-    "num_filter_types": {},
-    "num_filter_rules": [],
+    "num_filter_types": {
+      "absolute": {"method": "gaussian_normalization", "average": "323", "standard_deviation":"2.3"}
+    },
+    "num_filter_rules": [{"key" : "*", "type" : "absolute", "suffix" : "gaussian_normalized"}],
     "string_filter_types": {},
     "string_filter_rules": [],
     "num_types": {},

@@ -18,5 +18,5 @@ class getmongo:
         json_list = json.dumps(data)
 # Jsonをディクショナリに変換
         dic[count] = json.loads(json_list)
-        print dic[count]
         count += 1
+    print dic

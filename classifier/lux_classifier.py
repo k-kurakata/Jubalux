@@ -36,9 +36,9 @@ def train(client):
 
 def predict(client):
     data =[
-            Datum({'value':170}),
-            Datum({'value':200}),
-            Datum({'value':400}),
+            Datum({'value':320}),
+            Datum({'value':345}),
+            Datum({'value':343}),
             ]
 
     for d in data :

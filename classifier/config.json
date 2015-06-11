@@ -1,0 +1,16 @@
+{
+  "method": "AROW",
+  "converter" : {
+    "num_filter_types": {},
+    "num_filter_rules": [],
+    "string_filter_types": {},
+    "string_filter_rules": [],
+    "num_types": {},
+    "num_rules": [{"key" : "*", "type" : "log"}],
+    "string_types": {},
+    "string_rules": []
+  },
+  "parameter":{
+    "regularization_weight" : 1.0
+  }
+}

@@ -1,29 +1,27 @@
-#usr/bin/env python
+# usr/bin/env python
 # -*- coding:utf-8 -*-
 
 from pymongo import MongoClient
 import json
 
 class convertMongo:
-    con = MongoClient('172.16.4.84', 27017)
-    db = con['sensordb']
-    col = db.sensors
+    mongo_client = MongoClient('172.16.4.84', 27017)
+    sensor_db = mongo_client['sensordb']
+    sensors_collection = sensor_db.sensors
     global pre
-    pre = db.predict
-    global dic
-    dic = {}
+    pre = sensor_db.predict
+    global train_sensors_dic
+    train_sensors_dic = {}
     count = 0
 
-    for data in col.find():
+    for data in sensors_collection.find():
         del data['_id']
-# BsonをJsonに変換
-        json_list = json.dumps(data)
-# Jsonをディクショナリに変換
-        dic[count] = json.loads(json_list)
+        json_list  = json.dumps(data)
+        train_sensors_dic[count] = json.loads(json_list)
         count += 1
 
-    def getDic(self):
-        return dic
+    def getTrainSensorsDic(self):
+        return train_sensors_dic
     
     def postDB(self, result, value):
         pre.insert({'result':result, 'value':value})

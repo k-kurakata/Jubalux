@@ -16,24 +16,21 @@ from getpre import preMongo
 getmongo = convertMongo()
 
 def train(client):
-    # prepare training data
-    # predict the last ones (that are commented out)
-    dic = getmongo.getDic()
-    train_data = []
+    train_sensors_dic = getmongo.getTrainSensorsDic()
+    train_sensor_data = []
     value = 0
-    print dic
 
-    for line in dic:
-        value  = dic[line]['Value']
-        result = dic[line]['Result']
-        train_data.append((result, Datum({'Value': value})))
+    for line in train_sensors_dic:
+        value  = train_sensors_dic[line]['Value']
+        result = train_sensors_dic[line]['Result']
+        train_sensor_data.append((result, Datum({'Value': value})))
 
     # training data must be shuffled on online learning!
-    random.shuffle(train_data)
+    random.shuffle(train_sensor_data)
 
     # run train
-    client.train(train_data)
-    print 'complete train'
+    client.train(train_sensor_data)
+    print 'Train Complete!'
 
 def predict(client):
     getpre  = preMongo()
@@ -56,5 +53,5 @@ def predict(client):
 if __name__ == '__main__':
     # connect to the jubatus
     client = jubatus.Classifier(host, port, name)
-    # train(client)
+    train(client)
     predict(client)

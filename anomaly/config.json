@@ -3,14 +3,9 @@
  "parameter" : {
   "nearest_neighbor_num" : 10,
   "reverse_nearest_neighbor_num" : 30,
-  "method" : "euclid_lsh",
+  "method" : "minhash",
   "parameter" : {
-   "hash_num" : 8,
-   "table_num" : 16,
-   "probe_num" : 64,
-   "bin_width" : 10,
-   "seed" : 1234,
-   "retain_projection" : true
+   "hash_num" :32 
   }
  },
 
@@ -20,7 +15,7 @@
   "num_filter_types": {},
   "num_filter_rules": [],
   "string_types": {},
-  "string_rules": [{"key":"*", "type":"str", "global_weight" : "bin", "sample_weight" : "bin"}],
+  "string_rules": [],
   "num_types": {},
   "num_rules": [{"key" : "*", "type" : "num"}]
  }

@@ -5,9 +5,9 @@ from pymongo import MongoClient
 import json
 
 class convertMongo:
-    con = MongoClient('172.16.4.83', 27017)
+    con = MongoClient('172.16.4.84', 27017)
     db = con['sensordb']
-    col = db.sensors
+    col = db.no_name_sensors
     global dic
     dic = {}
     count = 0

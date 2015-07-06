@@ -10,6 +10,10 @@ NAME = "lux";
 
 if __name__ == '__main__':
 
+    con = MongoClient('172.16.4.84', 27017)
+    db = con.sensordb
+    col = db.anomaly
+
     # 1.Jubatus Serverへの接続設定
     anom = client.Anomaly("127.0.0.1",9199,NAME)
 
@@ -23,10 +27,10 @@ if __name__ == '__main__':
         value = dic[line]['value']
         datum = Datum()
 
-        for (k, v) in [
-                ['name', name],
-                ]:
-            datum.add_string(k, v)
+        # for (k, v) in [
+        #         ['name', name],
+        #         ]:
+        #     datum.add_string(k, v)
         
         for (k, v) in [
                 ['value', value],
@@ -37,6 +41,9 @@ if __name__ == '__main__':
         ret = anom.add(datum)
         
         # 4.結果の出力
-        if (ret.score != float('Inf')) and (ret.score!= 1.0):
-            # print ret, label
-            print ret
+        if (ret.score != float('Inf')) and (ret.score != 1.0):
+            col.insert({'result':'anomaly', 'value':value})
+            print ret, value
+        elif (ret.score != float('Inf')) and (ret.score == 1.0):
+            col.insert({'result':'nomaly', 'value':value})
+            print ret, value

@@ -4,12 +4,11 @@
 from pymongo import MongoClient
 import json
 
-class convertMongo:
+class preMongo:
     con = MongoClient('172.16.4.84', 27017)
     db = con['sensordb']
-    col = db.sensors
-    global pre
-    pre = db.predict
+    col = db.sensors_predict
+    colp = db.sensors_predict
     global dic
     dic = {}
     count = 0
@@ -24,9 +23,6 @@ class convertMongo:
 
     def getDic(self):
         return dic
-    
-    def postDB(self, result, value):
-        pre.insert({'result':result, 'value':value})
 
     # count = 0
     # for count in dic:
